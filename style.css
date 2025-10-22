@@ -1,0 +1,154 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Style Global Body */
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--dark);
+  background-color: var(--divider);
+  display: grid;
+  grid-template-columns: 3fr 1fr; /* fraction pour la sidebar et 3fraction pour le contenue */
+  grid-template-rows: auto 1fr auto; /* header contenue footer rows=ligne */
+  grid-template-areas:
+    "header header"
+    "main sidebar"
+    "footer footer";
+  min-height: 100vh;
+}
+
+/* Header */
+
+header {
+  grid-area: header;
+  background: #222;
+  color: #daa520;
+  text-align: center;
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+}
+
+header h1 {
+  font-size: 2rem;
+}
+
+header p {
+  font-size: 1rem;
+}
+
+#menu-btn {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-size: 1.5rem;
+  background: none;
+  color: #daa520;
+  display: none;
+}
+
+/* Sidebar */
+
+#sidebar {
+  grid-area: sidebar;
+  background-color: #222;
+  color: white;
+  padding: 0.5rem 0;
+}
+
+#sidebar ul {
+  list-style: none;
+}
+
+#sidebar a {
+  color: #daa520;
+  text-decoration: none;
+  display: block;
+  padding: 0.6rem 0;
+}
+
+#sidebar nav {
+  position: sticky;
+  top: 130px;
+}
+
+#sidebar a:hover {
+  text-decoration: underline;
+}
+
+/* MENU */
+
+main {
+  grid-area: main;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(1fr));
+  /* grid-template-columns: repeat(2, 1fr);  pour les articles en 2colonnes*/
+  gap: 1.2rem;
+}
+
+main section {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px black;
+}
+
+main img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+main h2 {
+  text-align: center;
+  margin-top: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+main p {
+  text-align: justify;
+}
+
+/* FOOTER */
+
+footer {
+  grid-area: footer;
+  background: #222;
+  color: #f8f8f8;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* Responsive design */
+
+@media (max-width: 768px) {
+  body {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "main"
+      "footer";
+    min-height: 100vh;
+  }
+
+  #sidebar {
+    position: fixed;
+    left: -250px;
+    top: 0;
+    width: 250px;
+    background: #222;
+    transition: left 0.3s;
+  }
+
+  #sidebar.active {
+    left: 0;
+  }
+  #menu-btn {
+    display: block;
+  }
+}
